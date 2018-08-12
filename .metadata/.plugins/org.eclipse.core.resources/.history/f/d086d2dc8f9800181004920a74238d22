@@ -1,0 +1,5 @@
+package org.zzu.domain;
+
+public class WebBoard {
+
+}

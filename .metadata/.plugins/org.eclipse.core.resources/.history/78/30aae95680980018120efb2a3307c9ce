@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+layout:decorate="~{/layout/layout1}">
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="content">
+<h1>Hello Page</h1>
+</div>
+
+<th:block layout:frament="script">
+	<script th:inline="javascript">
+		alert("JAVA SCRIPT BLOCK!!!");
+	</script>
+</body>
+</html>

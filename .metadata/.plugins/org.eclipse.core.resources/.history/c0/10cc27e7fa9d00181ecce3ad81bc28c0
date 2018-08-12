@@ -1,0 +1,5 @@
+package org.zzu.vo;
+
+public class PageVO {
+
+}

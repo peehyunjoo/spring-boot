@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sun Jul 22 16:21:26 GMT+09:00 2018
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\peehy\\.m2\\repository\\org\\springframework\\spring-web\\5.0.7.RELEASE\\spring-web-5.0.7.RELEASE.jar=C\:\\Users\\peehy\\Desktop\\sts\\sts-bundle\\pivotal-tc-server-developer-3.2.6.RELEASE\\base-instance\\wtpwebapps\\boot4\\WEB-INF\\lib\\spring-web-5.0.7.RELEASE.jar
+org.eclipse.jst.jee.server\:boot4=C\:\\Users\\peehy\\Desktop\\sts\\sts-bundle\\pivotal-tc-server-developer-3.2.6.RELEASE\\base-instance\\wtpwebapps\\boot4
