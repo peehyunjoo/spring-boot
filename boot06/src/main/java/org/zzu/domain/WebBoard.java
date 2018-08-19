@@ -32,7 +32,7 @@ public class WebBoard {
 	private String writer;
 	
 	@CreationTimestamp
-	private Timestamp regate;
+	private Timestamp regdate;
 	@UpdateTimestamp
 	private Timestamp updatedate;
 	
