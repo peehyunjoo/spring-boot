@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;Member.java&apos; to &apos;boot4/src/main/java/org.zzu.domain&apos;&#x0D;&#x0A;- Original project: &apos;boot4&apos;&#x0D;&#x0A;- Destination element: &apos;boot4/src/main/java/org.zzu.domain&apos;&#x0D;&#x0A;- Original element: &apos;Member.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java&lt;org.zzu.domain" element1="/src\/main\/java&lt;{Member.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1532242433862" units="1" version="1.0"/>
-</session>

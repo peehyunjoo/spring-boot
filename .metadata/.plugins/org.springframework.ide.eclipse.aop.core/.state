@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<aop-reference-model>
-<aop-project name="boot01"/>
-<aop-project name="boot02"/>
-<aop-project name="boot03"/>
-<aop-project name="boot04"/>
-<aop-project name="boot05"/>
-<aop-project name="boot06"/>
-</aop-reference-model>
