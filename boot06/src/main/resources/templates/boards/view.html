@@ -81,6 +81,7 @@ layout:decorate="~{/layout/layout1}">
 					<input type="text" class="form-control" name="replyer">
 				</div>
 				<div class="modal-footer">
+					<button id="delModalBtn" class="btn btn-danger">Delete</button>
 					<button id="modalBtn" class="btn btn btn-info">Save</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">
 					Close</button>
@@ -98,8 +99,8 @@ layout:decorate="~{/layout/layout1}">
 		$(document).ready(function(e){
 			(function(){
 				replyManager.getAll([[${vo.bno}]],printList);
-				})();
-			
+			})();
+		
 			function printList(list){
 				var str="";
 				var replyObj;
@@ -116,43 +117,81 @@ layout:decorate="~{/layout/layout1}">
 				}
 				$("#replyTable").html(str);
 			}
-			
+		
 			function formatDate(timeValue){
 				var date = new Date(timeValue);
 				return date.getFullYear()+ "-" + (date.getMonth()+1 >= 10?date.getMonth()+1
 				: '0' + (date.getMonth()+1) ) + "-" + date.getDate()
 			}
-			
+		
 			var mode;
 			$("#addReplyBtn").on("click",function(){
 				$("#myModal").modal("show");
 				$(".modal-title").text("Add Reply");
 				mode = "ADD";
 			});
-			
+		
 			var bno = [[${vo.bno}]];
 			
 			var replyTextObj = $("input[name='replyText']");
 			var replyerObj = $("input[name='replyer']");
 			
 			$("#modalBtn").click(function(){
-				if(mode == 'ADD'){
-					var replyText = replyTextObj.val();
-					var replyer = replyerObj.val();
-					
+				
+				var replyText = replyTextObj.val();
+				var replyer = replyerObj.val();
+				
+				if(mode == 'ADD'){	
 					var obj = {replyText:replyText, replyer: replyer, bno:bno};
 					
-				}
-				replyManager.add(obj, function(list){
-					printList(list);
-					alert("새로운 댓글이 추가 되었습니다.")
+					replyManager.add(obj, function(list){
+						printList(list);
+						afterAll(list);
+					});
+				}else if(mode == 'MOD'){
+					var obj = {replyText:replyText, bno:bno, rno:rno};
+					replyManager.update(obj, function(list){
+						alert("댓글이 수정되었습니다.");
+						afterAll(list);
+					});
+				} 
+				
+			});
+			
+			var rno;
+			$("#replyTable").on("click", "tr", function(e){
+				var tds = $(this).find('td');
+				console.log(tds);
+			
+				rno = tds[0].innerHTML;
+				mode = 'MOD';
+				
+				replyTextObj.val(tds[1].innerHTML);
+				replyerObj.val(tds[2].innerHTML);
+				$("#myModal").modal("show");
+				$(".modal-title").text("Modiy/Delete Reply");
+			});
+			
+			$("#delModalBtn").on("click",function(){
+				console.log(bno);
+				var obj = {bno:bno, rno:rno};
+				replyManager.remove(obj,function(list) {
+					printList(list);					
+					alert("댓글을 삭제 하겠습니까?");
 					$("#myModal").modal("hide");
 					replyTextObj.val("");
 					replyerObj.val("");
 				});
 			});
 			
+			function afterAll(list){
+				printList(list);
+				$("#myModal").modal("hide");
+				replyTextObj.val("");
+				replyerObj.val("");
+			}
 		});
+		
 	</script>
 </th:block>		
 </html>

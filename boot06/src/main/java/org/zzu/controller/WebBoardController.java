@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zzu.domain.WebBoard;
+import org.zzu.persistence.CustomCrudRepository;
 import org.zzu.persistence.WebBoardRepository;
 import org.zzu.vo.PageMaker;
 import org.zzu.vo.PageVO;
@@ -25,20 +26,20 @@ import lombok.extern.java.Log;
 public class WebBoardController {
 	
 	@Autowired
-	private WebBoardRepository repo;
+	//private WebBoardRepository repo;
+	private CustomCrudRepository repo;
 	@GetMapping("/list")
-	public void list(PageVO vo, Model model) {
+	public void list(@ModelAttribute("pageVO") PageVO vo, Model model) {
 			Pageable page =vo.makePageable(0, "bno");
 			
-			Page<WebBoard> result = repo.findAll(repo.makePredicate(
-					vo.getType(), vo.getKeyword()), page);
+			Page<Object[]> result = repo.getCustomPage(vo.getType(), vo.getKeyword(), page);
 			
-			
+
 			log.info("" + page);
 			log.info("" + result);
 			
 			log.info("TOTAL PAGE NUMBER:" + result.getTotalPages());
-			model.addAttribute("result", new PageMaker(result));
+			model.addAttribute("result", new PageMaker<>(result));
 		}
 	
 	@GetMapping("/register")
