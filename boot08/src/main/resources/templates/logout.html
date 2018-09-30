@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post">
+		<h3>Logout</h3>
+		<input type="hidden" th:name="${_csrf.parameterName}"
+			th:value="${_csrf.token}"/>
+		<button type="submit" class="btn">Logout</button>
+	</form>
+</body>
+</html>
