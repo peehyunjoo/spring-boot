@@ -11,5 +11,23 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<h3 sec:authentication="name">Spring security username</h3>
 	<h3> [[${#authentication.name}]]</h3>
 	<hr/>
+	
+	<p sec:authorize-url="/admin/aaa">
+		<a href="/admin/aaa">ADMIN AAA</a>
+	</p>
+	
+	<p sec:authorize-url="/manager/aaa">
+		<a href="/manager/aaa">MANAAGER AAA</a>
+	</p>
+	
+	<h1 sec:authorize="hasRole('ROLE_ADMIN')">
+		this content is only for administrators.
+	</h1>
+	
+	<div>[[${#authentication.principal.member}]]</div>
+	
+	<hr/>
+	
+	<div>[[${#authentication.principal.member.uname}]]</div>
 </body>
 </html>
